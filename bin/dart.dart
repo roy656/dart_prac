@@ -35,9 +35,11 @@ void main() {
   str2 = null;
   print(str2);
 
-  int? numb = 1;
-  numb = null;
-  print(numb);
+  int? number = 1;
+  number = null;
+  print(number);
+  // 변수명에 ??= 를 사용하면 : number 가 null 이라면 5를 할당.
+  number ??= 5;
 
   // final 과 const 는 값의 변경이 불가하다.
   final String name6 = 'Roy';
@@ -45,4 +47,54 @@ void main() {
   // var 기능을 같이한다. (타입 생략 가능).
   final name8 = 'abc';
   const name9 = 'bcd';
+
+  // final 은 build time 에 값을 몰라도 상과없다.
+  final DateTime now = DateTime.now();
+  // const 는 build time 에 값을 절대적으로 알고 있어야 한다.
+  // const DateTime now2 = DateTime.now();
+
+  print(name8 is String);
+  print(name8 is! String);
+
+
+  // List
+  // 배열
+  List<int> nList = [1,2,3,4,5];
+  List<String> sList = ['로이','올리','마리'];
+  sList.add('콜린');
+  sList.remove('콜린');
+  sList.indexOf('콜린');
+  print(nList[2]);
+  print(nList.length);
+
+
+  // Map
+  // key, value 형태
+  Map<String, String> family = {
+    'Father' : 'Roy',
+    'Mother' : 'Olivia',
+    'Daughter' : 'Mari'
+  };
+  
+  family.addAll({'Uncle' : 'Mark'});  // 추가 방법 1
+  family['Sister'] = 'none';          // 추가 방법 2
+  print(family['Uncle']);   // key 을 인덱스로 사용.
+  print(family);
+  print(family.keys);   // key 값만 전부 가져오기.
+  print(family.values); // value 값만 전부 가져오기.
+
+
+  // Set
+  // 중복 허용 X
+  Set<String> sSet = {
+    'Iron Man',
+    'Captain America',
+    'Hulk',
+    'Thor'
+    'Hulk'
+  };
+  print(sSet.add('Spider Man'));
+  print(sSet.remove('Captain America'));
+  print(sSet.contains('Thor'));
+  print(sSet);
 }
