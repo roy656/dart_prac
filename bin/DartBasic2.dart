@@ -2,9 +2,9 @@ void main() {
   // if 문
   int number = 6;
   if (number % 2 == 0) {
-    print('짝수 입니다.');
+    print('$number은 짝수 입니다.');
   } else {
-    print('홀수 입니다.');
+    print('$number은 홀수 입니다.');
   }
 
   // switch 문
