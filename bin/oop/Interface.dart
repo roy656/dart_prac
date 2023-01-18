@@ -29,7 +29,7 @@ class Group implements IdolInterface {
 }
 
 class Solo implements IdolInterface {
-  @override
+  @override   // 생략가능.
   String name;
 
   Solo(this.name);
