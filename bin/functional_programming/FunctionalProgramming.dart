@@ -73,7 +73,7 @@ void main() {
 
   print(people);
 
-  // where 사용시 해당 값이 true 면 keep, false 이면 제외 시킨다. (필터링)
+  // where 함수 사용시 해당 값이 true 면 keep, false 이면 제외 시킨다. (필터링)
   // people 의 요소의 'group' 이 'family' 와 같은 요소만 가져오고 아닐경우 제외.
   final family = people.where((x) => x['group'] == 'family');
   print(family);
@@ -83,7 +83,7 @@ void main() {
 
   // reduce 함수는 두가지 파라미터를 사용하는데, 처음은 1,2 번째 요소를 사용하고, 그 뒤로는
   // 첫번째 인자에 이전 함수의 리턴값이 사용되고, 두번째는 그냥 다음 요소를 사용.
-  //
+  // 사용된 인자 타입과 리턴값 타입이 같아야 한다.
   List<int> numbers = [1, 3, 5, 7, 9];
   final sum = numbers.reduce((prev, next){
     print('-------------');
@@ -103,13 +103,29 @@ void main() {
   List<String> words = [
     'I am ',
     'a king of the ',
-    'world!'
+    'world!!'
   ];
 
   final sentence = words.reduce((a,b) => a + b);
   print(sentence);
 
 
+  // fold 함수는 reduce 와 흡사하지만 좀더 보강된 함수.
+  // generic 으로 리턴타입을 정할수 있고 첫번째 인자의 값이 prev 에 대입되고
+  // next 에는 첫번째 요소 값이 대입된다. 그 뒤로는 동일.
+  final fold = numbers.fold<int>(0, (prev, next) => prev + next);
+  final fold2 = words.fold<String>('', (prev, next) => prev + next);
+  final fold3 = words.fold<int>(0, (prev, next) => prev + next.length);
+  print(fold);
+  print(fold2);
+  print(fold3);
 
 
+  // cascade operator
+  // ... 을 사용해서 요소들을 풀어서 넣을수 있다. -> 새로운 List 가 된다.
+  List<int> even = [2,4,6,8];
+  List<int> odd = [1,3,5,7];
+
+  print([even, odd]);
+  print([...even, ...odd]);
 }
